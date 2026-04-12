@@ -1,0 +1,11 @@
+This project uses the Agent Skills framework.
+
+## Agent Guidance
+Please refer to the `AGENTS.md` file in the repository root for:
+- Setup commands (install, build, test, lint)
+- Code style conventions
+- Testing instructions
+- Architecture notes and gotchas
+
+## Available Skills
+Check the `.agents/skills/` directory for specialized skills that provide detailed instructions for specific tasks (code review, requirements specification, code planning, debugging, testing, git workflow, refactoring). Use these structured workflows when performing associated tasks.

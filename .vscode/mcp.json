@@ -1,0 +1,18 @@
+{
+  "servers": {
+    // Add your MCP servers here.
+    // These tools will be available to Copilot in agent mode.
+    //
+    // Example — filesystem access:
+    // "filesystem": {
+    //   "command": "npx",
+    //   "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
+    // }
+    //
+    // Example — custom Python server:
+    // "my-tools": {
+    //   "command": "uv",
+    //   "args": ["--directory", "${workspaceFolder}", "run", "server.py"]
+    // }
+  }
+}

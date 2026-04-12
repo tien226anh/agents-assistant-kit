@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    // Add your MCP servers here.
+    // These tools will be available to Cursor's AI agent.
+    //
+    // Example — filesystem access:
+    // "filesystem": {
+    //   "command": "npx",
+    //   "args": ["-y", "@modelcontextprotocol/server-filesystem", "/absolute/path/to/project"]
+    // }
+    //
+    // Example — custom Python server:
+    // "my-tools": {
+    //   "command": "uv",
+    //   "args": ["--directory", "/absolute/path/to/server", "run", "server.py"]
+    // }
+  }
+}
