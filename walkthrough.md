@@ -15,7 +15,7 @@ agents_skills_builder/
 ├── package.json                               # Node.js NPM configuration 
 ├── pyproject.toml                             # Python package configuration 
 │
-├── skills/                                    # 19 built-in Agent Skills
+├── skills/                                    # 20 built-in Agent Skills
 │   ├── code-review/                           # Structured review workflow & security checks
 │   ├── git-workflow/                          # Branch naming, conventional commits, PR flow
 │   ├── debug-assistant/                       # Reproduce→Isolate→Hypothesize→Fix→Verify
