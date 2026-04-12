@@ -29,7 +29,8 @@ OPTIONS:
     --project <path>       Install skills into a specific project directory
     --user                 Install skills globally to ~/.agents/skills/
     --template <name>      AGENTS.md template to use (default: general)
-                           Available: general, python-fastapi, node-typescript
+    --agent <list>         Comma-separated list of agents to configure (default: all)
+                           Available: cursor, copilot, claude, cline, gemini, windsurf, all
     --no-compat            Skip creating IDE-specific compatibility files
     --dry-run              Show what would be done without making changes
     -h, --help             Show this help message
@@ -52,6 +53,7 @@ log_error()   { echo -e "${RED}✗${NC}  $1"; }
 MODE=""
 TARGET_DIR=""
 TEMPLATE="general"
+TARGET_AGENTS="all"
 NO_COMPAT=false
 DRY_RUN=false
 
@@ -70,6 +72,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --template)
             TEMPLATE="$2"
+            shift 2
+            ;;
+        --agent)
+            TARGET_AGENTS="$2"
             shift 2
             ;;
         --no-compat)
@@ -110,6 +116,14 @@ if [[ ! -f "$TEMPLATE_FILE" ]]; then
 fi
 
 # ---- Execute ----------------------------------------------------------------
+
+should_install_agent() {
+    local agent=$1
+    if [[ "$TARGET_AGENTS" == "all" || ",${TARGET_AGENTS}," == *",${agent},"* ]]; then
+        return 0
+    fi
+    return 1
+}
 
 run_cmd() {
     if [[ "$DRY_RUN" == "true" ]]; then
@@ -176,52 +190,73 @@ if [[ "$MODE" == "project" ]]; then
         log_info "Creating IDE compatibility files ..."
 
         # GitHub Copilot
-        COPILOT_DIR="${TARGET_DIR}/.github"
-        COPILOT_FILE="${COPILOT_DIR}/copilot-instructions.md"
-        if [[ ! -f "$COPILOT_FILE" ]]; then
-            run_cmd "mkdir -p '${COPILOT_DIR}'"
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.github/copilot-instructions.md' '${COPILOT_FILE}'"
-            log_success ".github/copilot-instructions.md"
-        else
-            log_warn ".github/copilot-instructions.md already exists — skipping"
+        if should_install_agent "copilot"; then
+            COPILOT_DIR="${TARGET_DIR}/.github"
+            COPILOT_FILE="${COPILOT_DIR}/copilot-instructions.md"
+            if [[ ! -f "$COPILOT_FILE" ]]; then
+                run_cmd "mkdir -p '${COPILOT_DIR}'"
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.github/copilot-instructions.md' '${COPILOT_FILE}'"
+                log_success ".github/copilot-instructions.md"
+            else
+                log_warn ".github/copilot-instructions.md already exists — skipping"
+            fi
         fi
 
         # Cursor rules
-        CURSOR_DIR="${TARGET_DIR}/.cursor"
-        CURSOR_FILE="${CURSOR_DIR}/rules.md"
-        if [[ ! -f "$CURSOR_FILE" ]]; then
-            run_cmd "mkdir -p '${CURSOR_DIR}'"
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/rules.md' '${CURSOR_FILE}'"
-            log_success ".cursor/rules.md"
-        else
-            log_warn ".cursor/rules.md already exists — skipping"
+        if should_install_agent "cursor"; then
+            CURSOR_DIR="${TARGET_DIR}/.cursor"
+            CURSOR_FILE="${CURSOR_DIR}/rules.md"
+            if [[ ! -f "$CURSOR_FILE" ]]; then
+                run_cmd "mkdir -p '${CURSOR_DIR}'"
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/rules.md' '${CURSOR_FILE}'"
+                log_success ".cursor/rules.md"
+            else
+                log_warn ".cursor/rules.md already exists — skipping"
+            fi
         fi
 
         # Claude Code
-        CLAUDE_FILE="${TARGET_DIR}/CLAUDE.md"
-        if [[ ! -f "$CLAUDE_FILE" ]]; then
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/CLAUDE.md' '${CLAUDE_FILE}'"
-            log_success "CLAUDE.md"
-        else
-            log_warn "CLAUDE.md already exists — skipping"
+        if should_install_agent "claude"; then
+            CLAUDE_FILE="${TARGET_DIR}/CLAUDE.md"
+            if [[ ! -f "$CLAUDE_FILE" ]]; then
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/CLAUDE.md' '${CLAUDE_FILE}'"
+                log_success "CLAUDE.md"
+            else
+                log_warn "CLAUDE.md already exists — skipping"
+            fi
         fi
 
         # Cline
-        CLINE_FILE="${TARGET_DIR}/.clinerules"
-        if [[ ! -f "$CLINE_FILE" ]]; then
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.clinerules' '${CLINE_FILE}'"
-            log_success ".clinerules"
-        else
-            log_warn ".clinerules already exists — skipping"
+        if should_install_agent "cline"; then
+            CLINE_FILE="${TARGET_DIR}/.clinerules"
+            if [[ ! -f "$CLINE_FILE" ]]; then
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.clinerules' '${CLINE_FILE}'"
+                log_success ".clinerules"
+            else
+                log_warn ".clinerules already exists — skipping"
+            fi
+        fi
+
+        # Windsurf
+        if should_install_agent "windsurf"; then
+            WINDSURF_FILE="${TARGET_DIR}/.windsurfrules"
+            if [[ ! -f "$WINDSURF_FILE" ]]; then
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.windsurfrules' '${WINDSURF_FILE}'"
+                log_success ".windsurfrules"
+            else
+                log_warn ".windsurfrules already exists — skipping"
+            fi
         fi
 
         # Google Antigravity
-        GEMINI_FILE="${TARGET_DIR}/GEMINI.md"
-        if [[ ! -f "$GEMINI_FILE" ]]; then
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/GEMINI.md' '${GEMINI_FILE}'"
-            log_success "GEMINI.md"
-        else
-            log_warn "GEMINI.md already exists — skipping"
+        if should_install_agent "gemini"; then
+            GEMINI_FILE="${TARGET_DIR}/GEMINI.md"
+            if [[ ! -f "$GEMINI_FILE" ]]; then
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/GEMINI.md' '${GEMINI_FILE}'"
+                log_success "GEMINI.md"
+            else
+                log_warn "GEMINI.md already exists — skipping"
+            fi
         fi
 
         # MCP config templates
@@ -240,13 +275,15 @@ if [[ "$MODE" == "project" ]]; then
         fi
 
         # Cursor MCP config
-        CURSOR_MCP="${CURSOR_DIR}/mcp.json"
-        if [[ ! -f "$CURSOR_MCP" ]]; then
-            run_cmd "mkdir -p '${CURSOR_DIR}'"
-            run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/mcp.json' '${CURSOR_MCP}'"
-            log_success ".cursor/mcp.json"
-        else
-            log_warn ".cursor/mcp.json already exists — skipping"
+        if should_install_agent "cursor"; then
+            CURSOR_MCP="${CURSOR_DIR}/mcp.json"
+            if [[ ! -f "$CURSOR_MCP" ]]; then
+                run_cmd "mkdir -p '${CURSOR_DIR}'"
+                run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/mcp.json' '${CURSOR_MCP}'"
+                log_success ".cursor/mcp.json"
+            else
+                log_warn ".cursor/mcp.json already exists — skipping"
+            fi
         fi
     fi
 

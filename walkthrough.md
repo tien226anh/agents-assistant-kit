@@ -74,8 +74,11 @@ agents_skills_builder/
 You can directly stream the setup script from GitHub. This fetches the repository securely into `/tmp`, passes your arguments into `install.sh`, and cleans up without leaving extraneous files behind.
 
 ```bash
-# Install globally
+# Install globally for all supported agents
 curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- --user
+
+# Target specific agents to avoid generating unnecessary config files
+curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- --project . --agent cursor,claude
 ```
 
 ### Local Checkout Installation

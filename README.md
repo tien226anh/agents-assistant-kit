@@ -52,7 +52,11 @@ The installer creates compatibility files for IDE-specific formats:
 ### NPM / Node.js
 If you have `npx` installed, you can execute the installer directly from GitHub. This proxies the arguments directly.
 ```bash
+# General setup
 npx github:tien226anh/agents-assistant-kit --project ./my-project
+
+# Target a specific IDE to avoid generating extra configs
+npx github:tien226anh/agents-assistant-kit --project ./my-project --agent cursor,windsurf
 ```
 
 ### Python / Pipx
