@@ -1,6 +1,6 @@
 ---
 name: debug-assistant
-description: Systematically debug errors, investigate bugs, and fix unexpected behavior. Use when the user reports a bug, encounters an error, sees unexpected output, or needs help troubleshooting an issue.
+description: Use when debugging errors, investigating bugs, or fixing unexpected behavior. Systematically diagnoses issues by gathering context, forming hypotheses, and verifying fixes.
 ---
 
 # Debug Assistant
@@ -93,3 +93,9 @@ go test ./...             # Go
 - Time-dependent bugs: add timestamps to debug logs to understand ordering.
 
 For common bug patterns by language/framework, see [references/common-patterns.md](references/common-patterns.md).
+
+## Integration
+
+- **Before this skill:** bug-analyzer
+- **After this skill:** code-review
+- **Complementary skills:** systematic-debugging, troubleshoot-infra

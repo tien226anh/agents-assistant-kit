@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Create, edit, and improve Agent Skills for this framework. Use when the user wants to create a new skill, modify an existing skill, test skill quality, optimize a skill description for better triggering, or learn how to write effective skills. Trigger when user mentions creating skills, writing SKILL.md files, improving agent behavior, or adding new capabilities to the agent.
+description: Use when creating, editing, or improving Agent Skills for this framework. Covers SKILL.md authoring, CSO description optimization, testing skill quality, and progressive disclosure patterns.
 ---
 
 # Skill Creator
@@ -172,10 +172,71 @@ Use this skill when...
 For detailed patterns, see [references/details.md](references/details.md).
 ```
 
+## CSO: Description Optimization
+
+The `description` field is the **single most important factor** in whether a skill gets activated. Agents use it to decide which skill to load from potentially 20+ options.
+
+### Description Rules
+
+1. **Write in third person.** The description is injected into the system prompt — inconsistent point-of-view causes discovery problems.
+   - ✅ "Processes Excel files and generates reports"
+   - ❌ "I can help you process Excel files"
+   - ❌ "You can use this to process Excel files"
+
+2. **Start with "Use when..."** to focus on triggering conditions, not workflow.
+   - ✅ "Use when the user asks to debug a persistent bug, trace root causes, or when standard debugging hasn't resolved the issue"
+   - ❌ "This skill walks through 5 debugging steps: reproduce, isolate, hypothesize, fix, verify"
+
+3. **Include specific symptoms and contexts.** These are the keywords agents search for.
+   - ✅ "Use when the user reports a bug, encounters an error, sees unexpected output, or needs help troubleshooting an issue"
+   - ❌ "Use for debugging"
+
+4. **Include adjacent terms.** Users may not use the exact skill name.
+   - ✅ "Use when the user asks to review code, check a PR, audit changes, look at a diff, or find problems in modified files"
+   - ❌ "Use for code review"
+
+5. **Keep under 500 characters if possible.** The max is 1024 characters, but shorter descriptions are more effective.
+
+6. **NEVER summarize the skill's process or workflow.** The description is for discovery, not instruction. The SKILL.md body provides the workflow.
+
+### Description Template
+
+```yaml
+description: Use when [specific triggering conditions and symptoms]. Include keywords: [comma-separated list of terms users might use].
+```
+
+For detailed optimization techniques, see [references/cso-best-practices.md](references/cso-best-practices.md).
+
+## Testing Skills
+
+After creating a skill, test that it activates correctly. See [references/testing-skills.md](references/testing-skills.md) for the full methodology.
+
+**Quick validation:**
+1. **Name check:** `name` must match directory name exactly (lowercase, hyphenated)
+2. **Frontmatter check:** Must have `---` delimiters and both `name` and `description` fields
+3. **Description check:** Starts with "Use when...", includes specific triggers, is third-person
+4. **Body check:** Under 500 lines, has "When to use" section, includes workflow steps
+
+```bash
+# Validate all skills
+for f in skills/*/SKILL.md; do
+  dir=$(basename $(dirname "$f"))
+  name=$(head -5 "$f" | grep "^name:" | sed 's/name: //')
+  [ "$dir" = "$name" ] && echo "✓ $dir" || echo "✗ $dir (name=$name)"
+done
+```
+
 ## Gotchas
 
 - **Name must match directory name.** `skills/my-skill/` → `name: my-skill`
 - **Name must be lowercase, hyphenated.** `my-skill` not `MySkill` or `my_skill`
 - **Description is the primary trigger.** If the skill doesn't activate, improve the description first.
 - **Don't duplicate other skills.** Cross-reference instead. Use "See the X skill for Y" patterns.
+- **Description is for discovery, not instruction.** Never summarize the workflow in the description — that's what the body is for.
+- **Third person only in descriptions.** "Use when..." not "I can help with..." or "You should use this when..."
 - **Test with real prompts.** Write 2-3 realistic user requests and verify the agent would use this skill.
+
+## Integration
+
+- **After this skill:** code-review
+- **Complementary skills:** skill-orchestrator, use-skill

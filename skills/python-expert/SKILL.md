@@ -1,6 +1,6 @@
 ---
 name: python-expert
-description: Expert guidance for Python software development including project setup, packaging, virtual environments, testing, linting, type checking, debugging, profiling, async programming, and framework-specific patterns. Use when the user is working on a Python project, setting up Python tooling, writing Python code, or asking about Python best practices.
+description: Use when working on Python projects. Covers project setup, packaging, virtual environments, testing, linting, type checking, debugging, profiling, async programming, and framework-specific patterns.
 ---
 
 # Python Expert
@@ -339,3 +339,9 @@ except ValidationError as e:
 
 For framework-specific patterns (FastAPI, SQLAlchemy, Celery), see [references/frameworks.md](references/frameworks.md).
 For Python tooling ecosystem overview, see [references/tooling.md](references/tooling.md).
+
+## Integration
+
+- **Before this skill:** code-planner
+- **After this skill:** code-review, test-writer
+- **Complementary skills:** debug-assistant, refactor

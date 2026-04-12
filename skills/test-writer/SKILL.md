@@ -1,6 +1,6 @@
 ---
 name: test-writer
-description: Write tests, add test coverage, and create test cases for code. Use when the user asks to write tests, add unit tests, create integration tests, increase coverage, or test a specific function or module.
+description: Use when writing tests, adding test coverage, or creating test cases for code. Covers unit tests, integration tests, mocking, assertions, and coverage across pytest, vitest, and jest.
 ---
 
 # Test Writer
@@ -118,4 +118,12 @@ Detect the project stack first, then apply the right patterns:
 - **Node.js/TypeScript testing details**: See the **nodejs-expert** skill for vitest mocking (`vi.fn`, `vi.mock`, `vi.spyOn`), MSW for HTTP mocking, and Playwright for E2E.
 
 For detailed test patterns (fixtures, parameterized, async), see [references/test-patterns.md](references/test-patterns.md).
+
+For common testing anti-patterns and how to fix them, see [references/testing-anti-patterns.md](references/testing-anti-patterns.md).
+
+## Integration
+
+- **Before this skill:** Use `test-driven-development` for the RED-GREEN-REFACTOR cycle
+- **After this skill:** Use `code-review` to review the tests you wrote
+- **Complementary skills:** `test-driven-development`, `code-review`, `debug-assistant`
 

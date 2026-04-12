@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use when the user asks to build web components, pages, landing pages, dashboards, React components, HTML/CSS layouts, or when styling and beautifying any web UI. Guides creative, polished code and UI design that avoids generic aesthetics. Trigger when user mentions building UI, creating web pages, designing components, or improving visual design.
+description: Use when building distinctive, production-grade frontend interfaces and web UI. Creates web components, pages, landing pages, dashboards, React components, and HTML/CSS layouts with high design quality that avoids generic aesthetics.
 ---
 
 # Frontend Design
@@ -149,3 +149,9 @@ Check the **nodejs-expert** skill for framework-specific patterns.
 - **Performance.** Heavy animations + large images = slow. Optimize images, use `will-change` sparingly.
 - **Accessibility.** Beautiful design that's unusable is not good design.
 - **Dark mode.** If using dark mode, ensure all text is readable and images work on dark backgrounds.
+
+## Integration
+
+- **Before this skill:** requirements-specifier, brainstorming
+- **After this skill:** code-review, test-writer, webapp-testing
+- **Complementary skills:** nodejs-expert

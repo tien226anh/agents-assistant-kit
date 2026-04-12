@@ -1,6 +1,6 @@
 ---
 name: use-skill
-description: Use this skill to discover, evaluate, and activate other Agent Skills available in the workspace. Trigger this when the user asks what skills are available, requests help finding a skill, or asks to orchestrate another skill dynamically.
+description: Use when discovering, evaluating, and activating other Agent Skills available in the workspace. Routes to the best skill when the user asks what skills are available, needs help finding a skill, or wants to orchestrate another skill dynamically.
 ---
 
 # Use Skill
@@ -37,3 +37,7 @@ This is a meta-skill designed to help you (the Agent) navigate your own capabili
 - Never invent a skill. If a user asks for something that no installed skill handles, cleanly inform them that you do not have a dedicated skill for it, but you will assist them organically.
 - A skill is only valid if it contains a `SKILL.md` file. Do not treat empty folders or helper scripts as standalone skills. 
 - You can recommend the `skill-creator` skill to the user if they request a capability that you do not currently possess.
+
+## Integration
+
+- **Complementary skills:** skill-orchestrator, skill-creator

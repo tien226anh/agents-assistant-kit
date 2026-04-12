@@ -1,6 +1,6 @@
 ---
 name: webapp-testing
-description: Test web applications using Playwright for browser automation, screenshot capture, DOM inspection, and interactive testing. Use when the user wants to verify frontend functionality, debug UI behavior, test user flows, capture screenshots, check browser console logs, or perform end-to-end testing of a web application.
+description: Use when testing web applications with Playwright for browser automation, screenshot capture, DOM inspection, and interactive testing. Verifies frontend functionality, debugs UI behavior, tests user flows, and performs end-to-end testing.
 ---
 
 # Web Application Testing
@@ -189,3 +189,9 @@ export default defineConfig({
 - **networkidle waits for 500ms of no network activity** — may not work for apps with persistent WebSocket or polling connections. Use `wait_for_selector` instead.
 - **Playwright auto-waits** before actions (click, fill) — you usually don't need explicit waits for elements.
 - **Use `page.locator()` over `page.$()`** — locators auto-retry and are more reliable.
+
+## Integration
+
+- **Before this skill:** frontend-design
+- **After this skill:** code-review
+- **Complementary skills:** test-writer, test-driven-development

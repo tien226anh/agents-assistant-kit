@@ -1,6 +1,6 @@
 ---
 name: nodejs-expert
-description: Expert guidance for Node.js and TypeScript software development including project setup, package management (npm/pnpm/bun), testing (vitest/jest), linting (eslint/biome), type safety, frameworks (Express/Fastify/NestJS/Next.js), async patterns, error handling, debugging, and performance profiling. Use when the user is working on a JavaScript or TypeScript project, setting up Node.js tooling, or asking about JS/TS best practices.
+description: Use when working on Node.js or TypeScript projects. Covers project setup, package management (npm/pnpm/bun), testing (vitest/jest), linting (eslint/biome), type safety, frameworks (Express/Fastify/NestJS/Next.js), async patterns, error handling, debugging, and performance profiling.
 ---
 
 # Node.js & TypeScript Expert
@@ -403,3 +403,9 @@ console.trace("Called from");   // Print stack trace
 
 For framework-specific patterns (Express, Fastify, NestJS, Next.js), see [references/frameworks.md](references/frameworks.md).
 For Node.js tooling ecosystem overview, see [references/tooling.md](references/tooling.md).
+
+## Integration
+
+- **Before this skill:** code-planner
+- **After this skill:** code-review, test-writer
+- **Complementary skills:** debug-assistant, refactor

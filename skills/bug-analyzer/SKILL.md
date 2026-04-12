@@ -1,6 +1,6 @@
 ---
 name: bug-analyzer
-description: Deep-dive triage of bugs, logs, stack traces, and crash reports. Use when the user asks to analyze a bug, perform root cause analysis (RCA), understand why a crash happened, or review logs to find an anomaly. Generates diagnostic reports instead of just patching code.
+description: Use when analyzing bugs, performing root cause analysis (RCA), understanding crashes, or reviewing logs to find anomalies. Deep-dives into triage of bugs, logs, stack traces, and crash reports, generating diagnostic reports instead of just patching code.
 ---
 
 # Bug Analyzer Workflow
@@ -53,3 +53,9 @@ Provide a structured response using this format:
 ## Anti-Patterns
 - **Do not guess:** If a log file is missing, ask the user to provide it.
 - **Do not mix analysis with execution:** Keep the RCA report separate from the code fix. Only write the code fix after the root cause is confirmed by the user.
+
+## Integration
+
+- **Before this skill:** debug-assistant
+- **After this skill:** code-review
+- **Complementary skills:** systematic-debugging, test-writer

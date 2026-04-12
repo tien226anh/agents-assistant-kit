@@ -1,6 +1,6 @@
 ---
 name: devops
-description: DevOps practices including Docker, Docker Compose, Kubernetes operations, CI/CD pipelines (GitHub Actions, GitLab CI), GitOps (ArgoCD/Flux), container registries, secrets management, monitoring and alerting setup, log aggregation, and deployment strategies (blue-green, canary, rolling). Use when the user asks about deployments, CI/CD, Docker, Kubernetes operations, monitoring, or infrastructure automation.
+description: Use when working with DevOps practices including Docker, Kubernetes, CI/CD pipelines (GitHub Actions, GitLab CI), GitOps (ArgoCD/Flux), container registries, secrets management, monitoring, log aggregation, and deployment strategies (blue-green, canary, rolling).
 ---
 
 # DevOps
@@ -392,3 +392,9 @@ async def metrics():
 - **Resource limits prevent noisy neighbors.** Always set CPU/memory requests and limits.
 - **CI/CD needs secrets rotation.** Rotate API keys, tokens, and credentials regularly.
 - **Monitoring is not optional.** If you can't measure it, you can't fix it.
+
+## Integration
+
+- **Before this skill:** architect-cloud, architect-onprem
+- **After this skill:** code-review, test-writer
+- **Complementary skills:** troubleshoot-infra, git-workflow

@@ -1,6 +1,6 @@
 ---
 name: troubleshoot-infra
-description: Systematic infrastructure troubleshooting for networking, DNS, TLS/SSL, Docker, Kubernetes, databases, load balancers, storage, and cloud services. Use when the user reports connectivity issues, server errors, container crashes, deployment failures, performance degradation, or any infrastructure-level problem.
+description: Use when troubleshooting infrastructure issues including networking, DNS, TLS/SSL, Docker, Kubernetes, databases, load balancers, storage, and cloud services. Diagnoses connectivity issues, server errors, container crashes, deployment failures, and performance degradation.
 ---
 
 # Infrastructure Troubleshooting
@@ -314,3 +314,9 @@ nethogs             # Network traffic per process
 - **DNS caching** at every layer (OS, container, application). Flush all caches when changing records.
 - **Time sync matters.** Out-of-sync clocks break TLS, tokens, and log correlation. Check `timedatectl` / NTP.
 - **Kubernetes RBAC** can silently block operations. Check `kubectl auth can-i` when things don't work.
+
+## Integration
+
+- **Before this skill:** devops
+- **After this skill:** bug-analyzer
+- **Complementary skills:** debug-assistant, systematic-debugging

@@ -1,6 +1,6 @@
 ---
 name: build-mcp-server
-description: Build MCP (Model Context Protocol) servers that expose tools, resources, and prompts to AI agents. Use when the user asks to create an MCP server, add MCP support, expose an API as MCP tools, or integrate with Claude Desktop, VS Code, Cursor, or other MCP clients.
+description: Use when building MCP (Model Context Protocol) servers that expose tools, resources, and prompts to AI agents. Trigger when user asks to create an MCP server, add MCP support, expose an API as MCP tools, or integrate with Claude Desktop, VS Code, Cursor, or other MCP clients.
 ---
 
 # Build MCP Server
@@ -177,3 +177,9 @@ echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":
 
 For MCP config templates, see [references/mcp-configs.md](references/mcp-configs.md).
 For a curated list of useful MCP servers, see [references/mcp-servers-catalog.md](references/mcp-servers-catalog.md).
+
+## Integration
+
+- **Before this skill:** requirements-specifier
+- **After this skill:** code-review, test-writer
+- **Complementary skills:** code-planner, nodejs-expert, python-expert

@@ -1,6 +1,6 @@
 ---
 name: doc-writer
-description: Guide users through structured documentation writing including technical specs, design docs, decision documents, proposals, RFCs, runbooks, and API documentation. Use when the user wants to write documentation, draft a proposal, create a technical spec, write a decision doc, create a README, or any structured writing task. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.
+description: Use when writing structured documentation including technical specs, design docs, decision documents, proposals, RFCs, runbooks, and API documentation. Guides drafting, organizing, and polishing docs.
 ---
 
 # Documentation Writer
@@ -116,3 +116,9 @@ After all sections are drafted:
 - **Audience matters more than completeness.** A doc for senior engineers can skip basics. A doc for new hires can't.
 - **Living docs need owners.** Note who maintains the doc and when to update it.
 - **Don't bury the lede.** If a design doc's key insight is on page 5, restructure.
+
+## Integration
+
+- **Before this skill:** requirements-specifier
+- **After this skill:** code-review
+- **Complementary skills:** brainstorming

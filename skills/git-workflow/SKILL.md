@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Manage git operations including branching, commits, merges, and pull requests. Use when the user asks about git commands, branch strategy, commit messages, resolving conflicts, or preparing a PR.
+description: Use when managing git operations including branching, commits, merges, pull requests, worktrees, and conflict resolution. Covers conventional commits, branch naming, and PR preparation.
 ---
 
 # Git Workflow
@@ -109,3 +109,71 @@ git push origin feature/my-feature --force-with-lease
 - Before rebasing, check if anyone else is working on the same branch.
 - Don't amend commits that have already been pushed to a shared branch.
 - When resolving conflicts, run tests after EVERY conflict resolution, not just at the end.
+
+## Git Worktrees (Isolated Workspaces)
+
+Use git worktrees when you need to work on multiple branches simultaneously without stashing or cloning.
+
+### When to use worktrees
+- Switching between features without losing uncommitted work
+- Running long tests on one branch while working on another
+- Reviewing a PR while keeping your current work intact
+- Hotfix production while mid-feature
+
+### Quick reference
+```bash
+# Create a worktree for a new branch
+git worktree add ../feature-auth feature/auth
+
+# Create a worktree for an existing branch
+git worktree add ../hotfix-login hotfix/login
+
+# List all worktrees
+git worktree list
+
+# Remove a worktree when done
+git worktree remove ../feature-auth
+
+# Prune deleted worktree references
+git worktree prune
+```
+
+See [references/worktrees.md](references/worktrees.md) for detailed patterns and best practices.
+
+## Branch Finishing Workflow
+
+When finishing work on a branch, follow this checklist:
+
+1. **Run all tests** — Ensure nothing is broken
+2. **Rebase on main** — Keep history clean
+3. **Squash related commits** — Combine WIP commits into meaningful units
+4. **Write final commit message** — Follow conventional commits format
+5. **Push and create PR** — Include description of changes
+6. **Clean up** — Delete the branch after merge
+
+```bash
+# 1. Run tests
+npm test  # or: pytest, go test, etc.
+
+# 2. Rebase on main
+git fetch origin
+git rebase origin/main
+
+# 3. Interactive rebase to squash (optional)
+git rebase -i origin/main
+
+# 4. Push
+git push origin feature/my-feature --force-with-lease
+
+# 5. After PR is merged, clean up
+git checkout main
+git pull origin main
+git branch -d feature/my-feature
+git push origin --delete feature/my-feature  # remote cleanup
+```
+
+## Integration
+
+- **Before this skill:** Use `writing-plans` to plan the work before branching
+- **After this skill:** Use `code-review` to review changes before merging
+- **Complementary skills:** `code-review`, `executing-plans`, `writing-plans`

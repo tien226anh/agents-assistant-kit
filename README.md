@@ -12,24 +12,33 @@ A curated framework of **Agent Skills** and **AGENTS.md** templates that superch
 
 | Skill | Activates When You Ask To... |
 |-------|------------------------------|
-| **code-review** | Review code, check a PR, audit changes |
-| **git-workflow** | Work with git: branch, commit, merge, PR |
-| **debug-assistant** | Debug a bug, investigate an error, fix unexpected behavior |
-| **test-writer** | Write tests, add coverage, create test cases |
-| **refactor** | Refactor, clean up, restructure, or improve code |
+| **architect-cloud** | Design multi-cloud architecture (AWS/GCP/Azure), IaC, serverless, cost optimization |
+| **architect-onprem** | Design on-premise infrastructure, k8s, CI/CD, HA, DR, security |
+| **brainstorming** | Explore design options, refine a rough idea, structured ideation before planning |
+| **bug-analyzer** | Deep-dive triage of bugs, logs, stack traces, crash reports |
 | **build-mcp-server** | Build MCP servers, add MCP tools/resources, configure MCP clients |
-| **python-expert** | Python development: setup, packaging, testing, typing, frameworks, async, debugging |
-| **architect-onprem** | On-premise architecture: servers, networking, storage, k8s, CI/CD, HA, DR, security |
-| **architect-cloud** | Multi-cloud architecture (AWS/GCP/Azure): compute, IaC, serverless, cost, security |
-| **nodejs-expert** | Node.js/TypeScript development: setup, pnpm, vitest, ESLint, frameworks, async, debugging |
-| **troubleshoot-infra** | Infrastructure troubleshooting: networking, DNS, TLS, Docker, Kubernetes, databases |
-| **devops** | DevOps: Docker, CI/CD (GitHub Actions/GitLab), Kubernetes ops, GitOps, monitoring |
-| **skill-creator** | Create, edit, and improve Agent Skills for this framework |
+| **code-planner** | Create step-by-step implementation plans before writing code |
+| **code-review** | Review code, check a PR, audit changes, find problems in diffs |
+| **debug-assistant** | Debug a bug, investigate an error, fix unexpected behavior |
+| **devops** | Docker, CI/CD, Kubernetes ops, GitOps, monitoring, deployment strategies |
+| **doc-writer** | Write structured docs: specs, ADRs, proposals, RFCs, runbooks, API docs |
+| **executing-plans** | Execute an implementation plan task-by-task with review checkpoints |
 | **frontend-design** | Build distinctive, production-grade frontend interfaces and web UI |
-| **webapp-testing** | Test web applications with Playwright: screenshots, E2E tests, browser automation |
-| **doc-writer** | Write structured documentation: specs, ADRs, proposals, RFCs, runbooks, API docs |
-| **use-skill** | Discover, evaluate, and activate other installed Agent Skills |
+| **git-workflow** | Work with git: branch, commit, merge, PR |
+| **nodejs-expert** | Node.js/TypeScript development: setup, pnpm, vitest, ESLint, frameworks |
+| **problem-solving** | Get unstuck, think creatively, find root causes when standard approaches fail |
+| **python-expert** | Python development: setup, packaging, testing, typing, frameworks, async |
+| **refactor** | Refactor, clean up, restructure, or improve existing code |
+| **requirements-specifier** | Extract user intent into structured requirements, PRDs, user stories |
+| **skill-creator** | Create, edit, and improve Agent Skills for this framework |
 | **skill-orchestrator** | Orchestrate and route requests to the best installed Agent Skill |
+| **systematic-debugging** | Debug hard bugs that resist normal troubleshooting, root cause tracing |
+| **test-driven-development** | Enforce RED-GREEN-REFACTOR cycle, write tests before implementation |
+| **test-writer** | Write tests, add coverage, create test cases |
+| **troubleshoot-infra** | Infrastructure troubleshooting: networking, DNS, TLS, Docker, Kubernetes |
+| **use-skill** | Discover, evaluate, and activate other installed Agent Skills |
+| **webapp-testing** | Test web apps with Playwright: screenshots, E2E tests, browser automation |
+| **writing-plans** | Create detailed implementation plans with bite-sized tasks |
 
 ### AGENTS.md Templates
 

@@ -1,6 +1,6 @@
 ---
 name: architect-cloud
-description: Solution architecture for multi-cloud software deployment across AWS, GCP, and Azure. Covers compute, storage, databases, networking, serverless, containers, IaC (Terraform), CI/CD, cost optimization, security, compliance, and cloud-native patterns. Use when the user asks about cloud architecture, deploying to AWS/GCP/Azure, cloud infrastructure design, serverless, managed services, or cloud migration.
+description: Use when designing multi-cloud architecture across AWS, GCP, or Azure. Covers compute, storage, databases, networking, serverless, containers, IaC, CI/CD, cost optimization, security, and cloud-native patterns.
 ---
 
 # Cloud Solution Architecture (Multi-Cloud)
@@ -272,3 +272,9 @@ jobs:
 
 For cloud-specific patterns and IaC examples, see [references/cloud-services.md](references/cloud-services.md).
 For Terraform patterns and modules, see [references/terraform-patterns.md](references/terraform-patterns.md).
+
+## Integration
+
+- **Before this skill:** requirements-specifier
+- **After this skill:** devops, writing-plans
+- **Complementary skills:** architect-onprem, code-planner

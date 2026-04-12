@@ -1,6 +1,6 @@
 ---
 name: refactor
-description: Refactor, restructure, clean up, or improve existing code. Use when the user asks to refactor code, improve code quality, extract functions, reduce duplication, simplify complex logic, or reorganize modules.
+description: Use when refactoring, restructuring, cleaning up, or improving existing code. Extracts functions, reduces duplication, simplifies complex logic, and reorganizes modules for better code quality.
 ---
 
 # Refactor
@@ -111,3 +111,9 @@ For a full catalog of refactoring patterns, see [references/refactor-catalog.md]
 - **Don't refactor code you don't understand.** Read it first, add comments, THEN refactor.
 - **Preserve public APIs.** If external code depends on a function signature, don't change it without a migration path.
 - **Watch for side effects.** When extracting functions, ensure you're not accidentally changing when side effects (logging, metrics, DB writes) occur.
+
+## Integration
+
+- **Before this skill:** code-review
+- **After this skill:** code-review
+- **Complementary skills:** test-writer, test-driven-development

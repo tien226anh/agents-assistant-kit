@@ -1,6 +1,6 @@
 ---
 name: skill-orchestrator
-description: Orchestrate and route user requests to the best installed Agent Skill. Use when the user asks to manage, select, activate, or coordinate other skills and when a meta-level skill choice is required.
+description: Use when orchestrating and routing user requests to the best installed Agent Skill. Manages skill selection, activation, and coordination when a meta-level skill choice is required.
 ---
 
 # Skill Orchestrator
@@ -56,3 +56,7 @@ If the choice is ambiguous, present 2-3 relevant skills and ask which one they p
 - "Which skill should I use for writing a new Agent Skill?"
 - "Orchestrate a workflow to review and improve this plugin."
 - "Find and activate the appropriate skill for debugging this error."
+
+## Integration
+
+- **Complementary skills:** use-skill, skill-creator

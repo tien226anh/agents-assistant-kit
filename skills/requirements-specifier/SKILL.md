@@ -1,6 +1,6 @@
 ---
 name: requirements-specifier
-description: Extract user intent into structured requirements, PRDs (Product Requirements Docs), user stories, and acceptance criteria. Use when the user wants to start a new feature, plan a project from scratch, or needs to clarify ambiguities before writing code.
+description: Use when extracting user intent into structured requirements, PRDs (Product Requirements Docs), user stories, and acceptance criteria. Clarifies ambiguities before writing code.
 ---
 
 # Requirements Specifier Workflow
@@ -52,3 +52,9 @@ Once the boundaries are clear, draft a structured specification document (often 
 ## Anti-Patterns
 - **Do not design the database or architecture:** Focus strictly on *what* the system should do, not *how* it should be built. Leave the *how* to the `code-planner` or `architect` skills.
 - **Do not assume defaults:** Always clarify standard behaviors (like pagination limits or timezone handling) with the user.
+
+## Integration
+
+- **Before this skill:** brainstorming
+- **After this skill:** writing-plans, code-planner
+- **Complementary skills:** doc-writer

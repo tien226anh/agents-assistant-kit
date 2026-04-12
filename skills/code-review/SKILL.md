@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Review code changes, audit pull requests, and check diffs for issues. Use when the user asks to review code, check a PR, audit changes, look at a diff, or find problems in modified files.
+description: Use when reviewing code changes, auditing pull requests, or checking diffs for issues. Performs two-stage review (spec compliance then code quality) with structured feedback. Include keywords: review, PR, pull request, diff, audit, code quality, feedback.
 ---
 
 # Code Review
@@ -80,10 +80,44 @@ Use this skill when asked to review code, check a pull request, audit recent cha
    - What was done well
    ```
 
+## Two-Stage Review (for significant changes)
+
+For PRs with 100+ lines changed or architectural impact, use a two-stage review:
+
+### Stage 1: Spec Compliance Review
+
+Before evaluating code quality, verify the implementation matches what was requested:
+
+1. **Read the spec/requirements** — What was supposed to be built?
+2. **Compare actual code to requirements** — Line by line
+3. **Check for missing pieces** — Were all requirements implemented?
+4. **Check for extra features** — Was anything added that wasn't requested?
+5. **Report findings** — "Spec compliant ✅" or list deviations
+
+See [references/spec-reviewer-prompt.md](references/spec-reviewer-prompt.md) for the full prompt template.
+
+### Stage 2: Code Quality Review
+
+After confirming spec compliance, evaluate code quality:
+
+1. **Security** → **Correctness** → **Design** → **Performance** → **Readability**
+2. **Categorize issues** — Critical (must fix), Important (should fix), Suggestions (nice to have)
+3. **Provide actionable fixes** — Not just "this is wrong" but "here's how to fix it"
+
+See [references/code-quality-reviewer-prompt.md](references/code-quality-reviewer-prompt.md) for the full prompt template.
+
 ## Gotchas
 - Don't flag style issues that a linter/formatter should handle — focus on logic and design.
 - When reviewing database migrations, check for both forward AND rollback safety.
 - For API changes, check backward compatibility with existing clients.
 - Always check if tests were updated to match the code changes.
+- For large PRs, prioritize critical issues over minor suggestions.
+- Never trust the implementer's self-report — verify independently.
 
 For a detailed review checklist, see [references/checklist.md](references/checklist.md).
+
+## Integration
+
+- **Before this skill:** Use `writing-plans` or `code-planner` to plan the implementation
+- **After this skill:** Use `executing-plans` to implement review feedback
+- **Complementary skills:** `executing-plans`, `writing-plans`, `code-planner`

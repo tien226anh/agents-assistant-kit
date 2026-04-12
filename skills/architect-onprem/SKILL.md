@@ -1,6 +1,6 @@
 ---
 name: architect-onprem
-description: Solution architecture for on-premise software deployment including server infrastructure, networking, storage, containerization, CI/CD pipelines, monitoring, security hardening, high availability, and disaster recovery. Use when the user asks about deploying software on-prem, designing infrastructure without cloud providers, self-hosted systems, bare-metal servers, or private data center architecture.
+description: Use when designing on-premise infrastructure including servers, networking, storage, containerization, CI/CD, monitoring, security hardening, high availability, and disaster recovery.
 ---
 
 # On-Premise Solution Architecture
@@ -186,6 +186,12 @@ Git push → CI build → Container image → Registry → ArgoCD → Kubernetes
 - [ ] Test restores monthly
 - [ ] Document RTO (Recovery Time Objective) and RPO (Recovery Point Objective)
 ```
+
+## Integration
+
+- **Before this skill:** requirements-specifier
+- **After this skill:** devops, troubleshoot-infra
+- **Complementary skills:** architect-cloud, code-planner
 
 ## Gotchas
 
