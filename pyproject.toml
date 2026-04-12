@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agents-skills-builder"
+version = "1.0.0"
+description = "A curated framework of Agent Skills and AGENTS.md templates that supercharge your IDE's AI coding agent."
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+    { name = "Agents Skills Builder" }
+]
+
+[project.scripts]
+agents-skills = "agents_skills_builder.main:run"

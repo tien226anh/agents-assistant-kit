@@ -12,6 +12,8 @@ agents_skills_builder/
 ├── README.md                                  # Human documentation
 ├── install.sh                                 # Local installer (--project / --user modes)
 ├── setup.sh                                   # Remote CLI installer (curl | bash wrapper)
+├── package.json                               # Node.js NPM configuration 
+├── pyproject.toml                             # Python package configuration 
 │
 ├── skills/                                    # 19 built-in Agent Skills
 │   ├── code-review/                           # Structured review workflow & security checks

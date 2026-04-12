@@ -1,0 +1,21 @@
+{
+  "name": "agents-skills-builder",
+  "version": "1.0.0",
+  "description": "A curated framework of Agent Skills and AGENTS.md templates that supercharge your IDE's AI coding agent.",
+  "scripts": {
+    "start": "node bin/agents-skills.js"
+  },
+  "bin": {
+    "agents-skills": "bin/agents-skills.js"
+  },
+  "files": [
+    "bin",
+    "skills",
+    "agents-md-templates",
+    "project-template",
+    "scripts",
+    "install.sh"
+  ],
+  "author": "",
+  "license": "MIT"
+}
