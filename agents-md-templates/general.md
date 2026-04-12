@@ -51,3 +51,9 @@
 - Branch naming: `<type>/<description>` (e.g., `feature/add-auth`)
 - Commit messages: Conventional Commits format
 - Always run lints and tests before committing
+
+## Agent Skills
+Check the `.agents/skills/` directory for specialized skills that provide detailed instructions for specific tasks. 
+
+**IMPORTANT: Transparency Rule**
+Whenever you act upon a user's request, you MUST explicitly state which skill(s) from `.agents/skills/` you are utilizing at the very beginning of your response. (e.g., "🛠️ *Skill Activated: code-review*"). Wait to read the skill document before executing.

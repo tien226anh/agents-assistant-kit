@@ -64,7 +64,13 @@ Python web API built with FastAPI.
 - All datetimes are UTC. Never use `datetime.now()` — use `datetime.now(UTC)`
 
 ## PR Conventions
-- Branch: `feature/`, `fix/`, `chore/`, `refactor/`
-- Commits: Conventional Commits (`feat(auth): add refresh token rotation`)
-- PRs must pass: `ruff check`, `ruff format --check`, `mypy`, `pytest`
-- Include migration in PR if schema changes
+- Branch naming: `<type>/<description>` (e.g., `feature/add-auth`)
+- Commit messages: Conventional Commits format
+- Run `ruff check` and `pytest` before committing
+- Include migrations if models changed
+
+## Agent Skills
+Check the `.agents/skills/` directory for specialized skills that provide detailed instructions for specific tasks. 
+
+**IMPORTANT: Transparency Rule**
+Whenever you act upon a user's request, you MUST explicitly state which skill(s) from `.agents/skills/` you are utilizing at the very beginning of your response. (e.g., "🛠️ *Skill Activated: code-review*"). Wait to read the skill document before executing.

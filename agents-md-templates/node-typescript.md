@@ -61,7 +61,13 @@ Node.js/TypeScript web application.
 - Never use `console.log` in production code — use the project's logger
 
 ## PR Conventions
-- Branch: `feature/`, `fix/`, `chore/`, `refactor/`
-- Commits: Conventional Commits (`feat(auth): add OAuth provider`)
-- Pre-commit: `pnpm lint && pnpm typecheck && pnpm test`
-- Title format: `[component] description`
+- Branch naming: `<type>/<description>` (e.g., `feature/add-auth`)
+- Commit messages: Conventional Commits format
+- All TypeScript compiler errors must be resolved before merging
+- Tests and linter must pass in CI
+
+## Agent Skills
+Check the `.agents/skills/` directory for specialized skills that provide detailed instructions for specific tasks. 
+
+**IMPORTANT: Transparency Rule**
+Whenever you act upon a user's request, you MUST explicitly state which skill(s) from `.agents/skills/` you are utilizing at the very beginning of your response. (e.g., "🛠️ *Skill Activated: code-review*"). Wait to read the skill document before executing.
