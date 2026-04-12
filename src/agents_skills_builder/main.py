@@ -8,7 +8,7 @@ def run():
     
     cmd = [
         "bash", "-c", 
-        f"curl -fsSL https://raw.githubusercontent.com/anhnt/agents_skills_builder/main/setup.sh | bash -s -- " + " ".join(args)
+        f"curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- " + " ".join(args)
     ]
     
     try:

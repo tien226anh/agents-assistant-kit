@@ -3,10 +3,10 @@ set -euo pipefail
 
 # ============================================================================
 # Agent Skills Builder — Remote CLI Installer Wrapper
-# Usage: curl -fsSL https://raw.githubusercontent.com/anhnt/agents_skills_builder/main/setup.sh | bash -s -- [OPTIONS]
+# Usage: curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- [OPTIONS]
 # ============================================================================
 
-REPO="anhnt/agents_skills_builder"
+REPO="tien226anh/agents-assistant-kit"
 BRANCH="${AGENT_SKILLS_BRANCH:-main}"
 TARBALL_URL="https://github.com/${REPO}/archive/refs/heads/${BRANCH}.tar.gz"
 

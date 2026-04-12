@@ -75,7 +75,7 @@ You can directly stream the setup script from GitHub. This fetches the repositor
 
 ```bash
 # Install globally
-curl -fsSL https://raw.githubusercontent.com/anhnt/agents_skills_builder/main/setup.sh | bash -s -- --user
+curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- --user
 ```
 
 ### Local Checkout Installation

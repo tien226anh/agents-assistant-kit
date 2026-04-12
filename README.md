@@ -52,13 +52,13 @@ The installer creates compatibility files for IDE-specific formats:
 ### NPM / Node.js
 If you have `npx` installed, you can execute the installer directly from GitHub. This proxies the arguments directly.
 ```bash
-npx github:anhnt/agents_skills_builder --project ./my-project
+npx github:tien226anh/agents-assistant-kit --project ./my-project
 ```
 
 ### Python / Pipx
 If you use `pipx`, you can run the CLI mapping securely from GitHub.
 ```bash
-pipx run git+https://github.com/anhnt/agents_skills_builder.git --project ./my-project
+pipx run git+https://github.com/tien226anh/agents-assistant-kit.git --project ./my-project
 ```
 
 ### One-Line Remote Installation (cURL)
@@ -66,7 +66,7 @@ You can securely download and run the installer directly from GitHub without clo
 
 ```bash
 # Global user install (Available to all your projects)
-curl -fsSL https://raw.githubusercontent.com/anhnt/agents_skills_builder/main/setup.sh | bash -s -- --user
+curl -fsSL https://raw.githubusercontent.com/tien226anh/agents-assistant-kit/main/setup.sh | bash -s -- --user
 ```
 
 ### Clone & Install
@@ -74,8 +74,8 @@ curl -fsSL https://raw.githubusercontent.com/anhnt/agents_skills_builder/main/se
 If you prefer to clone the repository first:
 
 ```bash
-git clone https://github.com/your-username/agents_skills_builder.git
-cd agents_skills_builder
+git clone https://github.com/tien226anh/agents-assistant-kit.git
+cd agents-assistant-kit
 
 # Install skills + AGENTS.md template into your project
 ./install.sh --project ~/my-project
