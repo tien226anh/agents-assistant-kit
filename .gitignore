@@ -1,0 +1,28 @@
+# Local install testing artifacts
+.agents/
+
+# Python
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+.env.*
+
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
