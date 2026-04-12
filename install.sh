@@ -31,6 +31,7 @@ OPTIONS:
     --template <name>      AGENTS.md template to use (default: general)
     --agent <list>         Comma-separated list of agents to configure (default: all)
                            Available: cursor, copilot, claude, cline, gemini, windsurf, all
+    --reinstall            Force overwrite of existing IDE compatibility files
     --no-compat            Skip creating IDE-specific compatibility files
     --dry-run              Show what would be done without making changes
     -h, --help             Show this help message
@@ -54,6 +55,7 @@ MODE=""
 TARGET_DIR=""
 TEMPLATE="general"
 TARGET_AGENTS="all"
+REINSTALL=false
 NO_COMPAT=false
 DRY_RUN=false
 
@@ -77,6 +79,10 @@ while [[ $# -gt 0 ]]; do
         --agent)
             TARGET_AGENTS="$2"
             shift 2
+            ;;
+        --reinstall)
+            REINSTALL=true
+            shift
             ;;
         --no-compat)
             NO_COMPAT=true
@@ -177,7 +183,7 @@ if [[ "$MODE" == "project" ]]; then
     # 3. Create AGENTS.md from template (if not exists)
     AGENTS_MD="${TARGET_DIR}/AGENTS.md"
     if [[ -f "$AGENTS_MD" ]]; then
-        log_warn "AGENTS.md already exists — skipping (use your existing one)"
+        log_warn "AGENTS.md already exists — skipping (preserved during --reinstall)"
     else
         log_info "Creating AGENTS.md from '${TEMPLATE}' template ..."
         run_cmd "cp '${TEMPLATE_FILE}' '${AGENTS_MD}'"
@@ -193,7 +199,7 @@ if [[ "$MODE" == "project" ]]; then
         if should_install_agent "copilot"; then
             COPILOT_DIR="${TARGET_DIR}/.github"
             COPILOT_FILE="${COPILOT_DIR}/copilot-instructions.md"
-            if [[ ! -f "$COPILOT_FILE" ]]; then
+            if [[ ! -f "$COPILOT_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "mkdir -p '${COPILOT_DIR}'"
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.github/copilot-instructions.md' '${COPILOT_FILE}'"
                 log_success ".github/copilot-instructions.md"
@@ -206,7 +212,7 @@ if [[ "$MODE" == "project" ]]; then
         if should_install_agent "cursor"; then
             CURSOR_DIR="${TARGET_DIR}/.cursor"
             CURSOR_FILE="${CURSOR_DIR}/rules.md"
-            if [[ ! -f "$CURSOR_FILE" ]]; then
+            if [[ ! -f "$CURSOR_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "mkdir -p '${CURSOR_DIR}'"
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/rules.md' '${CURSOR_FILE}'"
                 log_success ".cursor/rules.md"
@@ -218,7 +224,7 @@ if [[ "$MODE" == "project" ]]; then
         # Claude Code
         if should_install_agent "claude"; then
             CLAUDE_FILE="${TARGET_DIR}/CLAUDE.md"
-            if [[ ! -f "$CLAUDE_FILE" ]]; then
+            if [[ ! -f "$CLAUDE_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/CLAUDE.md' '${CLAUDE_FILE}'"
                 log_success "CLAUDE.md"
             else
@@ -229,7 +235,7 @@ if [[ "$MODE" == "project" ]]; then
         # Cline
         if should_install_agent "cline"; then
             CLINE_FILE="${TARGET_DIR}/.clinerules"
-            if [[ ! -f "$CLINE_FILE" ]]; then
+            if [[ ! -f "$CLINE_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.clinerules' '${CLINE_FILE}'"
                 log_success ".clinerules"
             else
@@ -240,7 +246,7 @@ if [[ "$MODE" == "project" ]]; then
         # Windsurf
         if should_install_agent "windsurf"; then
             WINDSURF_FILE="${TARGET_DIR}/.windsurfrules"
-            if [[ ! -f "$WINDSURF_FILE" ]]; then
+            if [[ ! -f "$WINDSURF_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.windsurfrules' '${WINDSURF_FILE}'"
                 log_success ".windsurfrules"
             else
@@ -251,7 +257,7 @@ if [[ "$MODE" == "project" ]]; then
         # Google Antigravity
         if should_install_agent "gemini"; then
             GEMINI_FILE="${TARGET_DIR}/GEMINI.md"
-            if [[ ! -f "$GEMINI_FILE" ]]; then
+            if [[ ! -f "$GEMINI_FILE" || "$REINSTALL" == "true" ]]; then
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/GEMINI.md' '${GEMINI_FILE}'"
                 log_success "GEMINI.md"
             else
@@ -266,7 +272,7 @@ if [[ "$MODE" == "project" ]]; then
         # VS Code MCP config
         VSCODE_DIR="${TARGET_DIR}/.vscode"
         VSCODE_MCP="${VSCODE_DIR}/mcp.json"
-        if [[ ! -f "$VSCODE_MCP" ]]; then
+        if [[ ! -f "$VSCODE_MCP" || "$REINSTALL" == "true" ]]; then
             run_cmd "mkdir -p '${VSCODE_DIR}'"
             run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.vscode/mcp.json' '${VSCODE_MCP}'"
             log_success ".vscode/mcp.json"
@@ -277,7 +283,7 @@ if [[ "$MODE" == "project" ]]; then
         # Cursor MCP config
         if should_install_agent "cursor"; then
             CURSOR_MCP="${CURSOR_DIR}/mcp.json"
-            if [[ ! -f "$CURSOR_MCP" ]]; then
+            if [[ ! -f "$CURSOR_MCP" || "$REINSTALL" == "true" ]]; then
                 run_cmd "mkdir -p '${CURSOR_DIR}'"
                 run_cmd "cp '${PROJECT_TEMPLATE_DIR}/.cursor/mcp.json' '${CURSOR_MCP}'"
                 log_success ".cursor/mcp.json"

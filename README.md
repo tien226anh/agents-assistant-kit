@@ -57,6 +57,9 @@ npx github:tien226anh/agents-assistant-kit --project ./my-project
 
 # Target a specific IDE to avoid generating extra configs
 npx github:tien226anh/agents-assistant-kit --project ./my-project --agent cursor,windsurf
+
+# Force overwrite of all IDE configuration profiles in a repository
+npx github:tien226anh/agents-assistant-kit --project ./my-project --reinstall
 ```
 
 ### Python / Pipx
