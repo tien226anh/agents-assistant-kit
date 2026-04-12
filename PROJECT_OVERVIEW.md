@@ -33,7 +33,7 @@ The framework spans a wide variety of development roles:
 - **Code & Refactor:** `code-planner`, `refactor`, `skill-creator`.
 - **Testing & Review:** `code-review`, `test-writer`, `webapp-testing`.
 - **Debugging & DevOps:** `bug-analyzer`, `debug-assistant`, `devops`, `troubleshoot-infra`.
-- **Project Workflows:** `doc-writer`, `git-workflow`, `requirements-specifier`, `use-skill`.
+- **Project Workflows:** `doc-writer`, `git-workflow`, `requirements-specifier`, `use-skill`, `skill-orchestrator`.
 
 ## Customization & Extensibility
 Developers can build proprietary skills by:

@@ -29,6 +29,7 @@ A curated framework of **Agent Skills** and **AGENTS.md** templates that superch
 | **webapp-testing** | Test web applications with Playwright: screenshots, E2E tests, browser automation |
 | **doc-writer** | Write structured documentation: specs, ADRs, proposals, RFCs, runbooks, API docs |
 | **use-skill** | Discover, evaluate, and activate other installed Agent Skills |
+| **skill-orchestrator** | Orchestrate and route requests to the best installed Agent Skill |
 
 ### AGENTS.md Templates
 
