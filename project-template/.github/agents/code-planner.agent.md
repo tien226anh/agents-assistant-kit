@@ -1,10 +1,10 @@
 ---
 description: "Use when planning step-by-step implementation before writing code. Generates phased execution plans with bite-sized tasks from requirements or design documents. Triggers on: plan implementation, create plan, break down tasks, implementation strategy, phased breakdown, how to build this."
 name: Code Planner
-tools: [read, search, todo, agent]
+tools: [read, search, todo, agent, 'sequential-thinking/*']
 user-invocable: true
 argument-hint: "Describe the feature or paste requirements to plan implementation for"
-agents: [Context Researcher]
+agents: [Context Researcher, 'Design Log Writer', 'Skill Dispatcher', 'Agent Coordinator']
 handoffs:
   - agent: agent
     label: "Start Implementation"

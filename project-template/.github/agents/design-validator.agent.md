@@ -1,7 +1,7 @@
 ---
 description: "Sub-agent for validating design decisions through happy path and edge case walkthroughs during brainstorming. Triggers on: validate design, walk through edge cases, stress test approach, check for unknowns, validate approach."
 name: Design Validator
-tools: [read, search, todo]
+tools: [read, search, todo, 'sequential-thinking/*']
 user-invocable: false
 ---
 

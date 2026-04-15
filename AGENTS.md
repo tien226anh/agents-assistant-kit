@@ -122,10 +122,13 @@ Custom agents are specialized AI personas defined in `project-template/.github/a
 | **Context Researcher** | Sub-agent | Gather codebase context, web research, competitor analysis |
 | **Approach Evaluator** | Sub-agent | Evaluate approaches, compare options, score alternatives |
 | **Design Validator** | Sub-agent | Validate design, walk through edge cases, stress test approach |
+| **Design Log Writer** | Sub-agent | Write and update brainstorming design documents as markdown files |
+| **Skill Dispatcher** | Sub-agent | Discover, select, and activate skills; compose multi-skill workflows |
+| **Agent Coordinator** | Sub-agent | Discover, select, and coordinate sub-agents; sequential and parallel pipelines |
 
 ### Agent Workflow
 
-1. **Brainstorming Agent** → Explore approaches, validate designs with sub-agents
+1. **Brainstorming Agent** → Explore approaches, validate designs with sub-agents, persist design documents via Design Log Writer
 2. **Requirements Specifier** → Formalize user stories and acceptance criteria
 3. **Code Planner** → Break down into bite-sized implementation tasks
 4. **Start Implementation** → Hand off to the default coding agent

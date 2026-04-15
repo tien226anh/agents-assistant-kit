@@ -1,7 +1,7 @@
 ---
 description: "Sub-agent for gathering codebase context, web research, and competitor analysis during brainstorming. Triggers on: research context, gather information, find patterns, analyze competitors, explore codebase."
 name: Context Researcher
-tools: [read, search, web]
+tools: [read, search, web, 'sequential-thinking/*']
 user-invocable: false
 ---
 

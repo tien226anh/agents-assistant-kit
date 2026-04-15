@@ -1,10 +1,10 @@
 ---
 description: "Use when brainstorming, ideating, exploring design options, refining a rough idea, or when requirements are vague and need structured exploration before planning. Triggers on: brainstorm, ideate, explore options, design thinking, how should we approach, what are the alternatives, let's think about, I want to build, rough idea."
 name: Brainstorming Agent
-tools: [read, search, web, todo, agent]
+tools: [read, search, web, todo, agent, 'sequential-thinking/*']
 user-invocable: true
 argument-hint: "Describe the idea, feature, or problem to explore"
-agents: [Context Researcher, Approach Evaluator, Design Validator]
+agents: [Context Researcher, Approach Evaluator, Design Validator, 'Design Log Writer', 'Skill Dispatcher', 'Agent Coordinator']
 handoffs:
   - agent: agent
     label: "Start Implementation"
@@ -48,6 +48,12 @@ Use these skills and scripts to enhance your brainstorming:
 - **project-context.sh** — Run to gather project metadata (languages, frameworks, dependencies) before exploring approaches
 - **analyze-diff.sh** — Run to understand recent changes that may affect the design
 
+### Sub-agents
+- **Context Researcher** — Delegate deep research tasks (codebase + web)
+- **Approach Evaluator** — Delegate scoring and ranking of approaches
+- **Design Validator** — Delegate edge case validation and stress testing
+- **Design Log Writer** — Delegate writing and updating the design document file in `docs/design/`
+
 ## Approach
 
 ### Phase 1: Explore (5-10 min)
@@ -61,6 +67,7 @@ Use these skills and scripts to enhance your brainstorming:
    - "How does this interact with [existing system]?"
    - "What's the priority: speed, cost, or flexibility?"
    - "Who are the end users and what's their technical level?"
+6. **Persist exploration results** — Delegate to `design-log-writer` sub-agent to create/update the design document with the problem statement, context, and approaches enumerated so far.
 
 ### Phase 2: Narrow (5-10 min)
 
@@ -68,6 +75,7 @@ Use these skills and scripts to enhance your brainstorming:
 2. **Identify trade-offs** — Every approach has costs; make them explicit
 3. **Rank approaches** — Score on: simplicity, maintainability, time-to-delivery, extensibility
 4. **Select the leading approach** — State why it wins and what trade-offs you're accepting
+5. **Persist evaluation results** — Delegate to `design-log-writer` sub-agent to update the design document with the decision matrix, selected approach, and trade-offs.
 
 ### Phase 3: Validate (5 min)
 
@@ -75,10 +83,18 @@ Use these skills and scripts to enhance your brainstorming:
 2. **Walk through an edge case** — Does it break under stress or unusual inputs? Delegate validation to `design-validator` sub-agent.
 3. **Check for unknowns** — Are there technical risks that need a spike or exploration?
 4. **Get explicit confirmation** — Present the approach and ask: "Should I proceed with this direction?"
+5. **Persist final design document** — Delegate to `design-log-writer` sub-agent to update the design document with validation results, final status, and version history.
 
 ## Output Format
 
-After validation, produce a design document:
+After validation, produce a design document. **Always delegate the actual file writing to the `design-log-writer` sub-agent** to ensure the document is persisted to `docs/design/`:
+
+1. Compile the brainstorming results into the design document format
+2. Delegate to `design-log-writer` with the compiled content
+3. Confirm the file path with the user
+4. Present a summary in the conversation
+
+The design document should follow this format:
 
 ```markdown
 # [Feature Name] — Design Document

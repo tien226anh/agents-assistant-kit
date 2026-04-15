@@ -64,5 +64,7 @@ Custom agents are specialized AI personas defined in `.github/agents/`. They pro
 | **Context Researcher** | Sub-agent | Gather codebase context, web research, competitor analysis |
 | **Approach Evaluator** | Sub-agent | Evaluate approaches, compare options, score alternatives |
 | **Design Validator** | Sub-agent | Validate design, walk through edge cases, stress test approach |
+| **Skill Dispatcher** | Sub-agent | Discover, select, and activate skills; compose multi-skill workflows |
+| **Agent Coordinator** | Sub-agent | Discover, select, and coordinate sub-agents; sequential and parallel pipelines |
 
 **How to use:** In GitHub Copilot Chat, type `@` to see available agents. Select a custom agent to start a specialized workflow.

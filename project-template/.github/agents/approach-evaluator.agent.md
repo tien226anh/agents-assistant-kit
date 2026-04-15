@@ -1,7 +1,7 @@
 ---
 description: "Sub-agent for scoring, ranking, and comparing design approaches during brainstorming. Triggers on: evaluate approaches, compare options, score alternatives, rank solutions, trade-off analysis."
 name: Approach Evaluator
-tools: [read, search, todo]
+tools: [read, search, todo, 'sequential-thinking/*']
 user-invocable: false
 ---
 

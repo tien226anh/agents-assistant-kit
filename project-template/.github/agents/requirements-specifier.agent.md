@@ -4,7 +4,7 @@ name: Requirements Specifier
 tools: [read, search, web, todo, agent]
 user-invocable: true
 argument-hint: "Describe the feature or project to specify requirements for"
-agents: [Context Researcher]
+agents: [Context Researcher, 'Design Log Writer', 'Skill Dispatcher', 'Agent Coordinator']
 handoffs:
   - agent: agent
     label: "Start Implementation"
