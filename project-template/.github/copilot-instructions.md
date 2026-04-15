@@ -49,3 +49,20 @@ Whenever you act upon a user's request, you MUST explicitly state which skill(s)
 | **use-skill** | Discover, evaluate, and activate other installed Agent Skills |
 | **webapp-testing** | Test web apps with Playwright: screenshots, E2E tests, browser automation |
 | **writing-plans** | Create detailed implementation plans with bite-sized tasks |
+
+## Custom Agents
+
+Custom agents are specialized AI personas defined in `.github/agents/`. They provide structured workflows for complex tasks like brainstorming, requirements gathering, and implementation planning.
+
+### Available Custom Agents
+
+| Agent | Type | Activates When You Ask To... |
+|-------|------|------------------------------|
+| **Brainstorming Agent** | Primary | Brainstorm, ideate, explore design options, refine a rough idea |
+| **Requirements Specifier** | Primary | Specify requirements, write PRD, define user stories, acceptance criteria |
+| **Code Planner** | Primary | Plan implementation, create step-by-step plans, break down tasks |
+| **Context Researcher** | Sub-agent | Gather codebase context, web research, competitor analysis |
+| **Approach Evaluator** | Sub-agent | Evaluate approaches, compare options, score alternatives |
+| **Design Validator** | Sub-agent | Validate design, walk through edge cases, stress test approach |
+
+**How to use:** In GitHub Copilot Chat, type `@` to see available agents. Select a custom agent to start a specialized workflow.

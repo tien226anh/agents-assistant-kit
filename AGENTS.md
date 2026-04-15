@@ -18,8 +18,9 @@ A pure file-based framework of 27 Agent Skills and AGENTS.md templates that supe
 skills/                    → Agent Skills (SKILL.md spec compliant)
 agents-md-templates/       → AGENTS.md templates for different tech stacks
 project-template/          → Drop-in template for any project
+  .github/agents/          → Custom agents (.agent.md files)
 scripts/                   → Shared helper scripts used by skills
-install.sh                 → Installer for deploying skills
+install.sh                 → Installer for deploying skills and agents
 ```
 
 ## Setup Commands
@@ -106,3 +107,35 @@ Whenever you act upon a user's request, you MUST explicitly state which skill(s)
 5. Validate: `name` matches directory, `description` starts with "Use when..."
 6. Test with an IDE agent to verify discovery and activation
 7. Update the Available Skills table in this file
+
+## Custom Agents
+
+Custom agents are specialized AI personas defined in `project-template/.github/agents/`. They provide structured workflows for complex tasks like brainstorming, requirements gathering, and implementation planning. The installer deploys them to the user's `.github/agents/` directory.
+
+### Available Custom Agents
+
+| Agent | Type | Activates When You Ask To... |
+|-------|------|------------------------------|
+| **Brainstorming Agent** | Primary | Brainstorm, ideate, explore design options, refine a rough idea |
+| **Requirements Specifier** | Primary | Specify requirements, write PRD, define user stories, acceptance criteria |
+| **Code Planner** | Primary | Plan implementation, create step-by-step plans, break down tasks |
+| **Context Researcher** | Sub-agent | Gather codebase context, web research, competitor analysis |
+| **Approach Evaluator** | Sub-agent | Evaluate approaches, compare options, score alternatives |
+| **Design Validator** | Sub-agent | Validate design, walk through edge cases, stress test approach |
+
+### Agent Workflow
+
+1. **Brainstorming Agent** → Explore approaches, validate designs with sub-agents
+2. **Requirements Specifier** → Formalize user stories and acceptance criteria
+3. **Code Planner** → Break down into bite-sized implementation tasks
+4. **Start Implementation** → Hand off to the default coding agent
+
+### Adding a New Agent
+
+1. Create `project-template/.github/agents/<agent-name>.agent.md`
+2. Add YAML frontmatter with `name`, `description`, `tools`, `user-invocable`, and optional `agents` and `handoffs`
+3. Write body instructions (workflow, constraints, output format)
+4. For sub-agents: set `user-invocable: false` and reference from a primary agent's `agents:` list
+5. Test with GitHub Copilot Chat by typing `@` and selecting the agent
+6. Update the Available Custom Agents table in this file
+7. Update `install.sh` if needed (agents are auto-discovered from `project-template/.github/agents/`)

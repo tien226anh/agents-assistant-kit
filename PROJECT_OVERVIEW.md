@@ -9,9 +9,9 @@ The framework adheres to the open [Agent Skills](https://agentskills.io/) and [A
 The repository handles skills content separately from templates and installation logic:
 - `skills/`: The core database of capabilities. Each sub-folder contains a spec-compliant `SKILL.md` file.
 - `agents-md-templates/`: Pre-constructed `AGENTS.md` files serving as project guidelines for various core tech stacks (e.g., general, Python/FastAPI, Node/TypeScript).
-- `project-template/`: Drop-in boilerplate that makes embedding Agent Skills into new repositories easy.
+- `project-template/`: Drop-in boilerplate that makes embedding Agent Skills into new repositories easy. Includes `.github/agents/` with custom agent definitions.
 - `scripts/`: Reusable, shared helper scripts (like `analyze-diff.sh` and `find-tests.sh`) leveraged by different skills when executing tasks.
-- `install.sh`: A shell-based installer that maps and deploys skills for local (`--project`) or global (`--user`) use. It also provisions IDE compatibility mappings.
+- `install.sh`: A shell-based installer that maps and deploys skills and agents for local (`--project`) or global (`--user`) use. It also provisions IDE compatibility mappings.
 
 ## Core Mechanisms
 
@@ -40,3 +40,20 @@ Developers can build proprietary skills by:
 1. Creating a folder inside `skills/` (e.g., `skills/my-new-skill/`).
 2. Providing a `SKILL.md` file wrapped with valid YAML frontmatter specifying the `name` and `description`.
 3. Outlining concise instructions in the markdown body. Optional support directories like `scripts/` or `references/` can be incorporated for advanced workflows.
+
+Developers can build custom agents by:
+1. Creating a `.agent.md` file inside `project-template/.github/agents/` (e.g., `my-agent.agent.md`).
+2. Adding YAML frontmatter with `name`, `description`, `tools`, `user-invocable`, and optional `agents` (sub-agents) and `handoffs`.
+3. Writing structured workflow instructions in the markdown body.
+4. The installer automatically discovers and deploys all `.agent.md` files to the user's `.github/agents/` directory.
+
+### Built-in Custom Agents
+
+| Agent | Type | Purpose |
+|-------|------|---------|
+| **Brainstorming Agent** | Primary | Structured ideation, design exploration, approach evaluation |
+| **Requirements Specifier** | Primary | PRDs, user stories, acceptance criteria |
+| **Code Planner** | Primary | Phased implementation plans with bite-sized tasks |
+| **Context Researcher** | Sub-agent | Codebase & web research for primary agents |
+| **Approach Evaluator** | Sub-agent | Scoring and ranking design approaches |
+| **Design Validator** | Sub-agent | Edge case walkthroughs and risk assessment |

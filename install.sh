@@ -9,6 +9,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS_SRC="${SCRIPT_DIR}/skills"
 SCRIPTS_SRC="${SCRIPT_DIR}/scripts"
+AGENTS_SRC="${SCRIPT_DIR}/project-template/.github/agents"
 TEMPLATES_DIR="${SCRIPT_DIR}/agents-md-templates"
 PROJECT_TEMPLATE_DIR="${SCRIPT_DIR}/project-template"
 
@@ -166,7 +167,21 @@ if [[ "$MODE" == "project" ]]; then
         fi
     done
 
-    # 2. Copy shared scripts into .agents/scripts/
+    # 2. Copy custom agents into .github/agents/
+    if [[ -d "$AGENTS_SRC" ]]; then
+        AGENTS_DEST="${TARGET_DIR}/.github/agents"
+        log_info "Installing custom agents to ${AGENTS_DEST}/ ..."
+        run_cmd "mkdir -p '${AGENTS_DEST}'"
+        for agent_file in "${AGENTS_SRC}"/*.agent.md; do
+            if [[ -f "$agent_file" ]]; then
+                agent_name="$(basename "$agent_file")"
+                run_cmd "cp '${agent_file}' '${AGENTS_DEST}/${agent_name}'"
+                log_success "  ${agent_name}"
+            fi
+        done
+    fi
+
+    # 3. Copy shared scripts into .agents/scripts/
     if [[ -d "$SCRIPTS_SRC" ]]; then
         SCRIPTS_DEST="${TARGET_DIR}/.agents/scripts"
         log_info "Installing helper scripts to ${SCRIPTS_DEST}/ ..."
@@ -180,7 +195,7 @@ if [[ "$MODE" == "project" ]]; then
         done
     fi
 
-    # 3. Create AGENTS.md from template (if not exists)
+    # 4. Create AGENTS.md from template (if not exists)
     AGENTS_MD="${TARGET_DIR}/AGENTS.md"
     if [[ -f "$AGENTS_MD" ]]; then
         log_warn "AGENTS.md already exists — skipping (preserved during --reinstall)"
@@ -190,7 +205,7 @@ if [[ "$MODE" == "project" ]]; then
         log_success "AGENTS.md created"
     fi
 
-    # 4. Create IDE compatibility files
+    # 5. Create IDE compatibility files
     if [[ "$NO_COMPAT" != "true" ]]; then
         echo ""
         log_info "Creating IDE compatibility files ..."
@@ -336,6 +351,7 @@ if [[ "$MODE" == "project" ]]; then
     echo "  3. Ask your agent: 'Review my last commit' or 'Write tests for X'"
     echo ""
     log_info "Add custom skills to: ${SKILLS_DEST}/"
+    log_info "Custom agents installed to: ${TARGET_DIR}/.github/agents/"
 else
     log_info "Skills installed globally. They'll be available in all projects."
     log_info "Add custom skills to: ${TARGET_DIR}/"

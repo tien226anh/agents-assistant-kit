@@ -47,6 +47,28 @@ Pre-built project guidance files for different tech stacks:
 - **Python / FastAPI** — uv, pytest, ruff, mypy, alembic
 - **Node / TypeScript** — pnpm, vitest, eslint, strict TS
 
+### Built-in Custom Agents (`.github/agents/`)
+
+Custom agents are specialized AI personas that provide structured workflows for complex tasks. They are installed to `.github/agents/` and appear in the GitHub Copilot Chat agent picker.
+
+| Agent | Type | Activates When You Ask To... |
+|-------|------|------------------------------|
+| **Brainstorming Agent** | Primary | Brainstorm, ideate, explore design options, refine a rough idea |
+| **Requirements Specifier** | Primary | Specify requirements, write PRD, define user stories, acceptance criteria |
+| **Code Planner** | Primary | Plan implementation, create step-by-step plans, break down tasks |
+| **Context Researcher** | Sub-agent | Gather codebase context, web research, competitor analysis |
+| **Approach Evaluator** | Sub-agent | Evaluate approaches, compare options, score alternatives |
+| **Design Validator** | Sub-agent | Validate design, walk through edge cases, stress test approach |
+
+**Agent workflow:** Brainstorm → Specify Requirements → Plan Implementation → Start Implementation
+
+### AGENTS.md Templates
+
+Pre-built project guidance files for different tech stacks:
+- **General** — works for any project
+- **Python / FastAPI** — uv, pytest, ruff, mypy, alembic
+- **Node / TypeScript** — pnpm, vitest, eslint, strict TS
+
 ### Cross-IDE Compatibility
 
 The installer creates compatibility files for IDE-specific formats:

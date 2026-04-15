@@ -43,6 +43,13 @@ agents_skills_builder/
 │
 ├── project-template/                          # IDE compatibility files
 │   ├── AGENTS.md                              # Minimal drop-in template
+│   ├── .github/agents/                        # Custom agents (.agent.md files)
+│   │   ├── brainstorming.agent.md             # Structured ideation & design exploration
+│   │   ├── requirements-specifier.agent.md    # PRDs, user stories, acceptance criteria
+│   │   ├── code-planner.agent.md              # Phased implementation planning
+│   │   ├── context-researcher.agent.md        # Codebase & web research sub-agent
+│   │   ├── approach-evaluator.agent.md        # Scoring & ranking sub-agent
+│   │   └── design-validator.agent.md          # Edge case validation sub-agent
 │   ├── .github/copilot-instructions.md        # GitHub Copilot compatibility
 │   ├── .cursor/rules.md                       # Cursor compatibility
 │   ├── .clinerules                            # Cline compatibility
